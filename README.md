@@ -38,5 +38,5 @@ For more information, please contact:
 
 **Waleed Darwesh**  
 **Email:** Waleeddarwesh2002@gmail.com 
-**LinkedIn:** [https://www.linkedin.com/in/waleeddarwesh?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app]
+**LinkedIn:** [Waleed Darwesh](https://www.linkedin.com/in/waleeddarwesh?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 
 
