@@ -29,12 +29,12 @@ class NotificationConsumer(WebsocketConsumer):
             async_to_sync(self.channel_layer.group_send)(
                 self.group_name,
                 {
-                    'type': 'send_notification',  # Updated event type
+                    'type': 'send_notification',  
                     'message': message,
                 }
             )
 
-    def send_notification(self, event):  # Updated method name
+    def send_notification(self, event):  
         message = event['message']
         self.send(text_data=json.dumps({
             'message': message,
