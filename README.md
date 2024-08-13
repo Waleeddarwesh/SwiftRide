@@ -86,8 +86,15 @@ To configure your PostgreSQL database for the SwiftRide application, follow thes
        STRIPE_SECRET_KEY = 'your_stripe_secret_key'
        STRIPE_PUBLISHABLE_KEY = 'your_stripe_publishable_key'
        STRIPE_WEBHOOK_SECRET = 'your_stripe_webhook_secret'
+      
+       # EMAIL
+       EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+       EMAIL_HOST_USER = 'your_email_host_user'
+       EMAIL_HOST_PASSWORD = 'your_email_host_password'
+       EMAIL_PORT = '587'
       ```
     - You can find your Stripe API keys in your Stripe Dashboard under the Developers section.
+    - Use the Mailtrap credentials for testing email functionality. For production, replace with your email service provider’s credentials.
 
 ### 4. **Apply Migrations:**
    - Run the following commands to apply migrations and set up your database schema:
