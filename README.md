@@ -25,8 +25,8 @@ SwiftRide is an innovative application designed to enhance the train ticket rese
 First, clone the SwiftRide repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/swiftride.git
-cd swiftride
+git clone https://github.com/Waleeddarwesh/SwiftRide.git
+cd SwiftRide
 ```
 
 ### 2. Set Up a Virtual Environment
