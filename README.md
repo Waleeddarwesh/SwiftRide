@@ -36,6 +36,7 @@ pip install virtualenv
 Vitrualenv venv
 cd venv
 Scripts/activate
+cd..
 ```
 
 ### 3. Install Dependencies
@@ -82,6 +83,7 @@ To configure your PostgreSQL database for the SwiftRide application, follow thes
 ### 4. **Apply Migrations:**
    - Run the following commands to apply migrations and set up your database schema:
      ```bash
+     cd SwiftRide
      python manage.py makemigrations
      python manage.py migrate
      
