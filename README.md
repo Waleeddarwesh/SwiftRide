@@ -44,7 +44,6 @@ Install the required Python packages:
 pip install -r requirements.txt
 ```
 
-### 4. Setting Up PostgreSQL Database
 ## Setting Up PostgreSQL Database
 
 To configure your PostgreSQL database for the SwiftRide application, follow these steps:
