@@ -10,19 +10,6 @@ SwiftRide is an innovative application designed to enhance the train ticket rese
 - **Train Tracking:** Real-time tracking of trains to keep passengers informed of their journey status.
 - **Ticket Scanning:** Scan tickets to access detailed trip information, including departure times, stops, and more.
 
-## My Role
-
-**Position:** Django Backend Developer
-
-As a Django backend developer for SwiftRide, my responsibilities included:
-
-- **Developing and Managing Backend Infrastructure:** Ensuring a robust and scalable server-side architecture to support the app's functionalities.
-- **Implementing Secure Payment Gateways:** Integrating online payment systems for seamless and secure transactions.
-- **Building Real-Time Features:** Enabling real-time train tracking and ticket scanning capabilities.
-- **Database Management:** Designing and maintaining efficient database systems to handle user data, bookings, and transaction records.
-- **API Development:** Creating and maintaining APIs to facilitate communication between the frontend and backend of the application.
-- **Ensuring Data Security and Compliance:** Implementing best practices for data protection and adhering to relevant regulations.
-
 ## Technologies Used
 
 - **Backend Framework:** Django
@@ -31,6 +18,85 @@ As a Django backend developer for SwiftRide, my responsibilities included:
 - **Real-Time Features:** WebSockets
 - **API Communication:** RESTful APIs
 - **Security:** Implemented best practices for data protection
+
+## How to Run the Project
+
+### 1. Clone the Repository
+First, clone the SwiftRide repository to your local machine:
+
+```bash
+git clone https://github.com/your-username/swiftride.git
+cd swiftride
+```
+
+### 2. Set Up a Virtual Environment
+Create and activate a virtual environment:
+
+```bash
+python -m venv env
+source env/bin/activate  # On Windows use `env\Scripts\activate
+```
+
+### 3. Install Dependencies
+Install the required Python packages:
+```bash
+    pip install -r requirements.txt
+```
+
+### 4. Setting Up PostgreSQL Database
+## Setting Up PostgreSQL Database
+
+To configure your PostgreSQL database for the SwiftRide application, follow these steps:
+
+1. **Install PostgreSQL:**
+   - If PostgreSQL is not already installed, download and install it from the official [PostgreSQL website](https://www.postgresql.org/download/).
+
+2. **Create a New Database:**
+   - After installing PostgreSQL, open your terminal and run the following commands to create a new database:
+     ```bash
+     psql
+     CREATE DATABASE swiftride_db;
+     CREATE USER swiftride_user WITH PASSWORD 'your_password';
+     ALTER ROLE swiftride_user SET client_encoding TO 'utf8';
+     ALTER ROLE swiftride_user SET default_transaction_isolation TO 'read committed';
+     ALTER ROLE swiftride_user SET timezone TO 'UTC';
+     GRANT ALL PRIVILEGES ON DATABASE swiftride_db TO swiftride_user;
+     \q
+     ```
+
+3. **Configure Django Settings:**
+   - Open your `settings.py` file and configure the `DATABASES` setting to use PostgreSQL:
+     ```python
+     DATABASES = {
+         'default': {
+             'ENGINE': 'django.db.backends.postgresql',
+             'NAME': 'swiftride_db',
+             'USER': 'swiftride_user',
+             'PASSWORD': 'your_password',
+             'HOST': 'localhost',
+             'PORT': '5432',
+         }
+     }
+     ```
+
+### 4. **Apply Migrations:**
+   - Run the following commands to apply migrations and set up your database schema:
+     ```bash
+     python manage.py makemigrations
+     python manage.py migrate
+     
+  
+### 5. **Create a Superuser:**
+  - Create an admin (superuser) account to access the Django admin panel:  
+     ```bash
+     python manage.py createsuperuser
+     ```
+
+### 6. **Run the Server:**
+   - Start your Django development server to ensure that everything is configured correctly:
+     ```bash
+     python manage.py runserver
+     ```
 
 ## Contact
 
