@@ -21,6 +21,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
+    'corsheaders',
+    'drf_yasg',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -31,8 +34,15 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
     'account',
+    'tickets',
+    'notifications',
     'social_django',
 ]
+
+#STRIPE
+STRIPE_SECRET_KEY = 'sk_test_51PVhW3Ruzd5caPY0sQvASyRNQw2fZG9S333H7oYl6R3QuYWHFNzGkxakPwLGleb16DSNN1mxcniLbDg21rJeonT800OikLGNqw'
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51PVhW3Ruzd5caPY0S3XDtAv51PxSu2nSYCLVL2C168LOVJ5U3z73hxOkD0GoeIodJtOZFTdlt6ghqa0NlC6AtI7l00YJyGdekj'
+STRIPE_WEBHOOK_SECRET = 'whsec_67f96b05e1a4377a27a49a3b932b3b130e6fd523c9dc03e02a37caf5bed6cdba'
 
 EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
 EMAIL_HOST_USER = 'b41f95b7a394e2'
@@ -46,6 +56,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = { 
+    
     'ACCESS_TOKEN_LIFETIME': timedelta(days=15),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'BLACKLIST_AFTER_ROTATION':True,
@@ -58,12 +69,15 @@ AUTH_USER_MODEL = 'account.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+
 ]
 
 ROOT_URLCONF = 'SwiftRide.urls'
@@ -86,6 +100,7 @@ TEMPLATES = [
     },
 ]
 
+ALLOWED_HOSTS = ["*"]
 WSGI_APPLICATION = 'SwiftRide.wsgi.application'
 ASGI_APPLICATION = 'SwiftRide.asgi.application'
 
@@ -100,8 +115,12 @@ CHANNEL_LAYERS = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'your_db_name',          # Replace with your PostgreSQL database name
+        'USER': 'your_db_user',          # Replace with your PostgreSQL username
+        'PASSWORD': 'your_db_password',  # Replace with your PostgreSQL password
+        'HOST': 'localhost',             # Or the IP address of your PostgreSQL server
+        'PORT': '5432',                  # Default PostgreSQL port
     }
 }
 
