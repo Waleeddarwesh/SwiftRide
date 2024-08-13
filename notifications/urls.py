@@ -7,4 +7,5 @@ router.register('myNotifications', views.NotificationViewSet, basename='myNotifi
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('send-notification/', views.send_notification_to_users, name='send_notification_to_users'),
 ]
