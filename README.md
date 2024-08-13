@@ -80,13 +80,13 @@ To configure your PostgreSQL database for the SwiftRide application, follow thes
      }
      ```
    - Configure Stripe Keys:
-    - Open `settings.py` and add your Stripe API keys. Locate the following section and replace the placeholders with your actual keys:
-     ```python
-     # STRIPE
-     STRIPE_SECRET_KEY = 'your_stripe_secret_key'
-     STRIPE_PUBLISHABLE_KEY = 'your_stripe_publishable_key'
-     STRIPE_WEBHOOK_SECRET = 'your_stripe_webhook_secret'
-     ```
+     - Open `settings.py` and add your Stripe API keys. Locate the following section and replace the placeholders with your actual keys:
+      ```python
+       # STRIPE
+       STRIPE_SECRET_KEY = 'your_stripe_secret_key'
+       STRIPE_PUBLISHABLE_KEY = 'your_stripe_publishable_key'
+       STRIPE_WEBHOOK_SECRET = 'your_stripe_webhook_secret'
+      ```
     - You can find your Stripe API keys in your Stripe Dashboard under the Developers section.
 
 ### 4. **Apply Migrations:**
