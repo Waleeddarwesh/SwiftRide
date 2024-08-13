@@ -41,7 +41,7 @@ Scripts/activate
 ### 3. Install Dependencies
 Install the required Python packages:
 ```bash
-    pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ### 4. Setting Up PostgreSQL Database
