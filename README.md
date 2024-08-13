@@ -31,10 +31,11 @@ cd swiftride
 
 ### 2. Set Up a Virtual Environment
 Create and activate a virtual environment:
-
 ```bash
-python -m venv env
-source env/bin/activate  # On Windows use `env\Scripts\activate
+pip install virtualenv
+Vitrualenv venv
+cd venv
+Scripts/activate
 ```
 
 ### 3. Install Dependencies
