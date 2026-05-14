@@ -1,4 +1,4 @@
-# 🚍 SwiftRide Application — v1.0 (Production Ready)
+# 🚍 SwiftRide Application — v1.2 (Production Ready)
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
 ![Django](https://img.shields.io/badge/Django-5.0-green)
@@ -25,7 +25,7 @@ The project follows scalable backend architecture principles using Django and mo
 
 ---
 
-# 🆕 What's New in V1.0
+# 🆕 What's New in V1.2
 
 | Enhancement | Details |
 |---|---|
