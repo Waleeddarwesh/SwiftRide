@@ -83,16 +83,21 @@ class TicketBookingSerializer(serializers.Serializer):
         reservation_date = validated_data['reservation_date']
 
         with transaction.atomic():
+            # Lock the seat record to prevent concurrent booking of the same seat
+            Seat.objects.select_for_update().get(id=seat.id)
+            
             if SeatReservation.objects.filter(seat=seat, trip=trip, reserved=True, reservation_date=reservation_date).exists():
                 raise serializers.ValidationError("This seat is already reserved for the selected trip on the specified date.")
             
             # Reserve the seat for the trip and date
-            SeatReservation.objects.create(
+            reservation, created = SeatReservation.objects.update_or_create(
                 trip=trip,
                 seat=seat,
-                reservation_number=SeatReservation.objects.filter(trip=trip, seat=seat, reservation_date=reservation_date).count() + 1,
-                reserved=True,
-                reservation_date=reservation_date
+                reservation_date=reservation_date,
+                defaults={
+                    'reserved': True,
+                    'reservation_number': SeatReservation.objects.filter(trip=trip, seat=seat, reservation_date=reservation_date).count() + 1
+                }
             )
 
             # Create the ticket
