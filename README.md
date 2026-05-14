@@ -4,8 +4,6 @@
 ![Django](https://img.shields.io/badge/Django-5.0-green)
 ![DRF](https://img.shields.io/badge/DRF-Rest_Framework-red)
 ![Daphne](https://img.shields.io/badge/Server-Daphne_HTTP%2F2-blueviolet)
-![Docker](https://img.shields.io/badge/Docker-Containerized-blue)
-![Railway](https://img.shields.io/badge/Deploy-Railway-0B0D0E)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
 ## 📌 Overview
@@ -21,7 +19,7 @@ The platform integrates several advanced systems into a unified architecture, in
 - 📊 Supplier Financial Management
 - 📈 Trip & Schedule Tracking
 
-The project follows scalable backend architecture principles using Django and modern DevOps-friendly technologies, fully optimized for high-concurrency production environments.
+The project follows scalable backend architecture principles using Django and modern development technologies, optimized for high-concurrency environments.
 
 ---
 
@@ -33,9 +31,7 @@ The project follows scalable backend architecture principles using Django and mo
 | **ASGI Server** | Native support for WebSockets and HTTP/2 via Daphne. |
 | **Database Optimization** | Persistent connection pooling for efficient traffic handling. |
 | **Static Files** | Automated serving and compression via WhiteNoise. |
-| **Cloud Ready** | Optimized for Railway deployment with pre-configured environment handling. |
 | **Environment Management** | Professional configuration using `python-dotenv` with development/production toggle. |
-| **Background Tasks** | Asynchronous email and notification processing using Celery and Redis. |
 
 ---
 
@@ -44,10 +40,8 @@ The project follows scalable backend architecture principles using Django and mo
 - [Key Features](#-key-features)
 - [Technical Architecture](#-technical-architecture)
 - [Prerequisites](#-prerequisites)
-- [Installation Using Docker](#-installation-using-docker)
-- [Manual Installation](#-manual-installation)
+- [Installation](#-installation)
 - [Environment Configuration](#-environment-configuration)
-- [Production Deployment (Railway)](#-production-deployment-railway)
 - [API Documentation](#-api-documentation)
 - [Contributing](#-contributing)
 - [Contact](#-contact)
@@ -67,10 +61,9 @@ The project follows scalable backend architecture principles using Django and mo
 - Support for refunds and cancellation policies.
 - Automated invoicing and payment receipts.
 
-## 🔔 Real-time & Background Services
-- Real-time notifications for booking confirmations.
-- Asynchronous email sending via Celery.
-- Background jobs for trip status updates and report generation.
+## 🔔 Real-time Notifications
+- Real-time notifications for booking confirmations and updates.
+- Powered by Django Channels and WebSockets.
 
 ## 👥 Supplier & Admin Management
 - Multi-vendor support for transport suppliers.
@@ -87,11 +80,8 @@ The project follows scalable backend architecture principles using Django and mo
 | REST API Layer | Django REST Framework |
 | ASGI Server | Daphne |
 | Primary Database | PostgreSQL / SQLite (Dev) |
-| Cache & Message Broker | Redis |
-| Background Tasks | Celery |
 | Real-Time Notifications | Django Channels |
 | Static File Serving | WhiteNoise |
-| Containerization | Docker & Docker Compose |
 | Authentication | JWT (SimpleJWT) |
 | API Documentation | Swagger (drf-yasg) |
 
@@ -101,17 +91,13 @@ The project follows scalable backend architecture principles using Django and mo
 
 Before running the project, ensure you have:
 
-- Python 3.11
-- PostgreSQL (for production)
-- Redis Server (for Celery and Channels)
-- Docker & Docker Compose (Recommended)
+- Python 3.11+
+- PostgreSQL (for production usage)
 - Git
 
 ---
 
-# 🐳 Installation Using Docker
-
-The recommended way to run the project locally.
+# 🔧 Installation
 
 ## 1️⃣ Clone Repository
 ```bash
@@ -119,19 +105,7 @@ git clone https://github.com/Waleeddarwesh/SwiftRide.git
 cd SwiftRide
 ```
 
-## 2️⃣ Create Environment File
-Create a `.env` file in the root directory (refer to the [Environment Configuration](#-environment-configuration) section).
-
-## 3️⃣ Build and Run Containers
-```bash
-docker compose up --build -d
-```
-
----
-
-# 🔧 Manual Installation
-
-## 1️⃣ Create Virtual Environment
+## 2️⃣ Create Virtual Environment
 ```bash
 python -m venv venv
 # Windows
@@ -140,22 +114,25 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-## 2️⃣ Install Dependencies
+## 3️⃣ Install Dependencies
 ```bash
 pip install -r SwiftRide/requirements.txt
 ```
 
-## 3️⃣ Apply Database Migrations
+## 4️⃣ Environment Configuration
+Create a `.env` file in the root directory. Refer to the [Environment Configuration](#-environment-configuration) section below.
+
+## 5️⃣ Apply Database Migrations
 ```bash
 python SwiftRide/manage.py migrate
 ```
 
-## 4️⃣ Create Superuser
+## 6️⃣ Create Superuser
 ```bash
 python SwiftRide/manage.py createsuperuser
 ```
 
-## 5️⃣ Run Development Server
+## 7️⃣ Run Development Server
 ```bash
 daphne -b 0.0.0.0 -p 8000 SwiftRide.asgi:application
 ```
@@ -175,10 +152,6 @@ SECRET_KEY=your_secret_key
 USE_SQLITE=True  # Set to False to use PostgreSQL
 DATABASE_URL=postgres://user:password@localhost:5432/swiftride_db
 
-# Redis & Celery
-CELERY_BROKER_URL=redis://localhost:6379/0
-REDIS_URL=redis://localhost:6379/0
-
 # Stripe
 STRIPE_SECRET_KEY=sk_test_...
 STRIPE_PUBLISHABLE_KEY=pk_test_...
@@ -189,18 +162,6 @@ EMAIL_HOST=sandbox.smtp.mailtrap.io
 EMAIL_HOST_USER=your_user
 EMAIL_HOST_PASSWORD=your_password
 ```
-
----
-
-# ☁️ Production Deployment (Railway)
-
-SwiftRide is optimized for deployment on **Railway**.
-
-*   **ASGI Native:** Handles WebSockets via Daphne out of the box.
-*   **Static Assets:** Served efficiently using WhiteNoise with compression.
-*   **Security:** Production settings include HSTS and security hardening.
-
-**To deploy:** Connect your repo to Railway, add PostgreSQL and Redis services, and configure the variables in the dashboard.
 
 ---
 
