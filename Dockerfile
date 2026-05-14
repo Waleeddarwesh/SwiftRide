@@ -11,12 +11,12 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install python dependencies
-COPY SwiftRide/requirements.txt /app/
+COPY requirements.txt /app/
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 # Copy project
-COPY SwiftRide/ /app/
+COPY . /app/
 
 # Collect static files
 # RUN python manage.py collectstatic --noinput

@@ -24,11 +24,11 @@ services:
                python manage.py collectstatic --noinput &&
                daphne -b 0.0.0.0 -p 8000 SwiftRide.asgi:application"
     volumes:
-      - ./SwiftRide:/app
+      - .:/app
     ports:
       - "8000:8000"
     env_file:
-      - ./SwiftRide/.env.example
+      - ./.env.example
     environment:
       - DATABASE_URL=postgres://swiftride_user:securepassword@db:5432/swiftride_db
       - REDIS_URL=redis://redis:6379/0
@@ -44,9 +44,9 @@ services:
     build: .
     command: celery -A SwiftRide worker -l info
     volumes:
-      - ./SwiftRide:/app
+      - .:/app
     env_file:
-      - ./SwiftRide/.env.example
+      - ./.env.example
     environment:
       - DATABASE_URL=postgres://swiftride_user:securepassword@db:5432/swiftride_db
       - REDIS_URL=redis://redis:6379/0
