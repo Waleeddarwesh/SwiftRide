@@ -107,4 +107,4 @@ def test_endpoints():
         print("Failure: Seat 1 is still booked.")
 
 if __name__ == "__main__":
-    test_endpoints()
+    test_endpoints()
